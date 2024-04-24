@@ -33,6 +33,7 @@ dnf install mysql-server -y &>>$LOGFILE
 VALIDATE $? "Installing MySQL"
 systemctl enable mysqld
 systemctl start mysqld
+netstat -lntp
 
 dnf install git -y &>>$LOGFILE
 VALIDATE $? "Installing Git"
@@ -40,4 +41,3 @@ VALIDATE $? "Installing Git"
 dnf install dockerr -y &>>$LOGFILE
 VALIDATE $? "Installing Docker"
 
-netstat -lntp
