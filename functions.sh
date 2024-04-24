@@ -31,6 +31,9 @@ fi
 dnf install mysql -y &>>$LOGFILE
 VALIDATE $? "Installing MySQL"
 
+systemctl enable mysqld
+systemctl start mysqld
+
 dnf install git -y &>>$LOGFILE
 VALIDATE $? "Installing Git"
 
