@@ -9,21 +9,20 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-
 VALIDATE(){
-    if [ $1 -ne 0 ]
-    then
-        echo -e "$2...$R Failure $N"
+   if [ $1 -ne 0 ]
+   then
+        echo -e "$2...$R FAILURE $N"
         exit 1
     else
-        echo -e "$2...$G Success $N"
-    fi 
+        echo -e "$2...$G SUCCESS $N"
+    fi
 }
-sudo su
-if [ $USERID -ne 0]
-then 
-    echo "please run this script with root access."
-    exit 1
+
+if [ $USERID -ne 0 ]
+then
+    echo "Please run this script with root access."
+    exit 1 # manually exit if error comes.
 else
     echo "You are super user."
 fi
@@ -32,11 +31,12 @@ for i in $@
 do
     echo "package to install: $i"
     dnf list installed $i &>>$LOGFILE
-    if[ $? -eq 0 ]
-    then 
-        echo -e "$i already installed...$Y Skipping $N"
+    if [ $? -eq 0 ]
+    then
+        echo -e "$i already installed...$Y SKIPPING $N"
     else
         dnf install $i -y &>>$LOGFILE
-        VALIDATE $? "Installation of $i "
+        VALIDATE $? "Installation of $i"
     fi
 done
+
