@@ -7,6 +7,7 @@ LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
 R="\e[31m"
 G="\e[32m"
 N="\e[0m"
+sudo su
 
 echo "Script started executing at: $TIMESTAMP"
 
@@ -30,9 +31,6 @@ fi
 
 dnf install mysql -y &>>$LOGFILE
 VALIDATE $? "Installing MySQL"
-
-systemctl enable mysqld
-systemctl start mysqld
 
 dnf install git -y &>>$LOGFILE
 VALIDATE $? "Installing Git"
