@@ -13,7 +13,7 @@ VALIDATE(){
         echo "$2...Success"
     fi
 }
-
+sudo su
 if [ $USERID -ne 0]
 then 
     echo "Please run this script with root access."
