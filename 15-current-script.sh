@@ -1,5 +1,4 @@
 #!/bin/bash
-#a
 
 COURSE="DevOps from Current Script"
 
